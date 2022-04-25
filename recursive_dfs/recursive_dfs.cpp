@@ -6,7 +6,7 @@
 
 using namespace std::chrono;
 
-class BFS_Recursion
+class DFS_Recursion
 {
     public:
         void AddEdge(int v, int w)
@@ -14,7 +14,7 @@ class BFS_Recursion
             adj_[v].push_back(w);
         }
 
-        void StartBFS(int start_node)
+        void StartDFS(int start_node)
         {
             isVisited_[start_node] = true;
             std::cout << "Visited node: " << start_node << "\n";
@@ -23,7 +23,7 @@ class BFS_Recursion
             {
                 if(!isVisited_[*it])
                 {
-                    StartBFS(*it);
+                    StartDFS(*it);
                 }
             }
         }
@@ -36,27 +36,26 @@ class BFS_Recursion
 };
 
 
-
 int main()
 {
     auto start = high_resolution_clock::now();
 
-    BFS_Recursion bfs_graph;
+    DFS_Recursion DFS_graph;
 
-    bfs_graph.AddEdge(0, 1);
-    bfs_graph.AddEdge(0, 2);
-    bfs_graph.AddEdge(1, 2);
-    bfs_graph.AddEdge(2, 0);
-    bfs_graph.AddEdge(2, 3);
-    bfs_graph.AddEdge(3, 3);
+    DFS_graph.AddEdge(0, 1);
+    DFS_graph.AddEdge(0, 2);
+    DFS_graph.AddEdge(1, 2);
+    DFS_graph.AddEdge(2, 0);
+    DFS_graph.AddEdge(2, 3);
+    DFS_graph.AddEdge(3, 3);
 
-    std::cout << "Following is Breadth First Traversal "
+    std::cout << "Following is Depth First Traversal "
          << "(starting from vertex 2) \n";
-    bfs_graph.StartBFS(2);
+    DFS_graph.StartDFS(2);
 
     auto duration = duration_cast<microseconds>(high_resolution_clock::now() - start);
 
-    std::cout << "Time taken: " << duration.count() << "microseconds. \n";
+    std::cout << "Time taken: " << duration.count() << " microseconds. \n";
     
     return 0;
 }

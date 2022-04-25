@@ -23,6 +23,11 @@ namespace bfs_ns
              * @param w 
              */
             void AddEdge(int v, int w);
+            /**
+             * @brief start traverse graph with start_node
+             * 
+             * @param start_node 
+             */
             void StartBFS(int start_node);
 
         private:
